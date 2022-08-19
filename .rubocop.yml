@@ -135,7 +135,13 @@ Style/StringChars: # new in 1.12
   Enabled: true
 Style/SwapValues: # new in 1.1
   Enabled: true
+  
 Style/Documentation:
   Exclude:
     - 'app/helpers/application_helper.rb'
     - 'config/application.rb'
+    - 'db/migrate/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'

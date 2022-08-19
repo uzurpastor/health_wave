@@ -3,8 +3,20 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'pages#home'
+
+  devise_for :users,
+             path: 'devise',
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations',
+               displays: 'users/displays'
+             }
+
+  controller 'users/displays' do
+    get 'users/:id',
+        action: :show,
+        as: :user
+  end
 end
