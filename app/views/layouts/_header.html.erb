@@ -1,0 +1,9 @@
+<% if current_user %>
+  <p>You are login as User: <%= link_to current_user.email, user_path(current_user) %>  
+     <%= link_to 'Logout', destroy_user_session_path %></p>
+<% end %>
+
+<% if current_doctor %>
+  <p>You are login as Doctor: <%= link_to current_doctor.email, doctor_path(current_doctor) %>  
+     <%= link_to 'Logout', destroy_user_session_path %></p>
+<% end %>
