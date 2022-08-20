@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   devise_for :users,
-    controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations',
-      displays: 'users/displays'
-    }
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations',
+               displays: 'users/displays'
+             }
 
   controller 'users/displays' do
     get 'users/:id',

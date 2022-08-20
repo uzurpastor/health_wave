@@ -142,6 +142,15 @@ Style/Documentation:
     - 'config/application.rb'
     - 'db/migrate/*'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'  
 Metrics/BlockLength:
   Exclude:
     - 'db/schema.rb'
+    - 'db/migrate/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.active_storage.rb'
