@@ -4,11 +4,9 @@ module Users
   # Allow view User model information
   class DisplaysController < ApplicationController
     def show
-      @user = User.select(:id, :email).find(params[:id])
+      @user = User.select(:id, :email, :name).find(params[:id])
       render 'users/displays/show'
     end
-
-    def index; end
 
     # def show_user object
     #   self.resource = object
