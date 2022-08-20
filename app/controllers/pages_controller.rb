@@ -2,7 +2,7 @@
 
 # Controller for static pages
 class PagesController < ApplicationController
-  skip_before_action :authenticate_account! 
+  skip_before_action :authenticate_account!
 
   def home; end
 end

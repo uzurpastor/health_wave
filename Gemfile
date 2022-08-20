@@ -31,8 +31,8 @@ gem 'aws-sdk-s3'
 ##
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rubocop', require: false
   gem 'faker'
+  gem 'rubocop', require: false
 end
 
 group :development do

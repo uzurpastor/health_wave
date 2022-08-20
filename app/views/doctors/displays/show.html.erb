@@ -1,3 +1,6 @@
+<% if @user.avatar.present? %>
+  <%= image_tag @user.avatar, alt: "avatar", width: 50 %>
+<% end %>
 <h2>
   <%= @doctor.inspect %>
 </h2>

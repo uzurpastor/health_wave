@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReceptions < ActiveRecord::Migration[7.0]
   def change
     create_table :receptions do |t|
@@ -6,7 +8,7 @@ class CreateReceptions < ActiveRecord::Migration[7.0]
       t.string    :description, null: false
       t.datetime  :time
       t.string    :response
-      t.string    :status,      null: false
+      t.string    :status, null: false
       t.timestamps
     end
   end

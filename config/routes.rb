@@ -12,7 +12,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
                displays: 'users/displays'
              }
-  
+
   devise_for :doctors,
              controllers: {
                sessions: 'doctors/sessions',
