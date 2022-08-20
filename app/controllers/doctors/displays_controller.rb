@@ -1,6 +1,6 @@
-class Doctor::DisplaysController < ActionController
+class Doctors::DisplaysController < ApplicationController
   def show
-    @doctor = Doctor.select(:id, :email, :name).find(params[:id])
+    @doctor = Doctor.select(:id, :email, :name, :category).find(params[:id])
     render 'doctors/displays/show'
   end
 end
