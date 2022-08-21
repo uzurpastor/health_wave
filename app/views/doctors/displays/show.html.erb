@@ -4,7 +4,7 @@
 <h2>
   <%= @doctor.inspect %>
 </h2>
-
+  
 <% if @doctor == current_doctor %>
   <%= link_to  'show my receptions', patient_list_path %>
 <% end %>
