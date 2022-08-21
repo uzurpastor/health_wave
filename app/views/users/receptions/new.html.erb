@@ -1,0 +1,18 @@
+<h2>Create reception</h2>
+
+<%= form_for(@reception, url: users_create_reception_path, data: { turbo: false}) do |f| %>
+  
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :doctor %><br />
+    <%= f.select :doctor_id, @doctors, include_blank: true, default: ''%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

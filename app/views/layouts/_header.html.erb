@@ -7,3 +7,9 @@
   <p>You are login as Doctor: <%= link_to current_doctor.email, doctor_path(current_doctor) %>  
      <%= link_to 'Logout', destroy_user_session_path %></p>
 <% end %>
+
+<br>
+
+<% flash.each do |msg_t, msg| %>
+  <%=  msg %>
+<% end %> 

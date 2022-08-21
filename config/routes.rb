@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get 'receptions',
       controller: 'receptions',
       action: :index,
-      as: :index_receptions
+      as: :index_reception
   end
 
   namespace :users do 
@@ -44,10 +44,16 @@ Rails.application.routes.draw do
       controller: 'receptions',
       action: :index,
       as: :index_receptions
-      
+
+    get 'receptions/new',
+      controller: 'receptions',
+      action: :new,
+      as: :new_reception
+
     post 'receptions',
       controller: 'receptions',
-      action: :create
+      action: :create,
+      as: :create_reception
   end
 
 # Show actions
