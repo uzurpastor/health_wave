@@ -6,7 +6,7 @@
 </h2>
   
 <% if @doctor == current_doctor %>
-  <%= link_to  'show my receptions', patient_list_path %>
+  <%= link_to  'show my receptions', doctors_index_receptions_path %>
 <% end %>
 
 <%= link_to "Edit", edit_doctor_registration_path %>

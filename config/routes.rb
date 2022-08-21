@@ -10,29 +10,57 @@ Rails.application.routes.draw do
              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations',
-               displays: 'users/displays'
+               displays: 'users/displays',
+               receptions: 'users/receptions'
              }
 
   devise_for :doctors,
              controllers: {
                sessions: 'doctors/sessions',
                registrations: 'doctors/registrations',
-               displays: 'doctors/displays'
+               displays: 'doctors/displays',
+               receptions: 'doctors/receptions'
              }
 
-  controller 'users/displays' do
-    get 'users/:id',
+  namespace :doctors do
+    patch 'receptions/:id/set_time', 
+      controller: 'receptions',
+      action: :set_time,
+      as: :set_time_receptions
+
+    patch 'receptions/:id/give_feedback', 
+      controller: 'receptions',
+      action: :give_feedback,
+      as: :give_feedback_receptions
+
+    get 'receptions',
+      controller: 'receptions',
+      action: :index,
+      as: :index_receptions
+  end
+
+  namespace :users do 
+    get 'receptions',
+      controller: 'receptions',
+      action: :index,
+      as: :index_receptions
+      
+    post 'receptions',
+      controller: 'receptions',
+      action: :create
+  end
+
+# Show actions
+  get 'users/:id',
+        controller: 'users/displays',
         action: :show,
         as: :user
-  end
-
-  controller 'doctors/displays' do
-    get 'doctors/:id',
+  get 'doctors/:id',
+        controller: 'doctors/displays',
         action: :show,
         as: :doctor
-  end
-
-  controller :receptions do
-    get 'patient_list', action: :patient_list  
-  end
+  get 'reseptions/:id',
+        controller: 'reseptions',
+        action: :show,
+        as: :reception
 end

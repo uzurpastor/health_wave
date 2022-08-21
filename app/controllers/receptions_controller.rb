@@ -1,6 +1,7 @@
 class ReceptionsController < ApplicationController
-  def patient_list
-    @receptions = current_doctor.receptions
-    render 'receptions/patient_list'
+
+  def show
+    @receptions = Reception.find params[:id]
+    render 'receptions/show'
   end
 end
