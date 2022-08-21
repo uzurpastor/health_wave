@@ -3,6 +3,7 @@
 class Doctor < ApplicationRecord
   has_many :receptions
   has_many :users, through: :receptions
+  has_one_attached :avatar
   enum :category, {
     pediatrician:     'pediatrician',
     endocrinologist:  'endocrinologist',

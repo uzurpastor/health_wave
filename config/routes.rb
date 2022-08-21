@@ -31,4 +31,8 @@ Rails.application.routes.draw do
         action: :show,
         as: :doctor
   end
+
+  controller :receptions do
+    get 'patient_list', action: :patient_list  
+  end
 end

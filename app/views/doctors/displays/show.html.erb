@@ -1,7 +1,12 @@
-<% if @user.avatar.present? %>
+<% if @doctor.avatar.attached? %>
   <%= image_tag @user.avatar, alt: "avatar", width: 50 %>
 <% end %>
 <h2>
   <%= @doctor.inspect %>
 </h2>
+
+<% if @doctor == current_doctor %>
+  <%= link_to  'show my receptions', patient_list_path %>
+<% end %>
+
 <%= link_to "Edit", edit_doctor_registration_path %>
