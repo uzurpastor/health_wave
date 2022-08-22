@@ -40,5 +40,3 @@ ActiveAdmin.register User do
     active_admin_comments
   end
 end
-
-end
