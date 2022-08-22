@@ -23,15 +23,25 @@ Rails.application.routes.draw do
              }
 
   namespace :doctors do
-    patch 'receptions/:id/set_time', 
+    get 'receptions/:id/time', 
       controller: 'receptions',
-      action: :set_time,
-      as: :set_time_receptions
+      action: :edit_time,
+      as: :new_time_receptions
 
-    patch 'receptions/:id/give_feedback', 
+    put 'receptions/:id/time', 
       controller: 'receptions',
-      action: :give_feedback,
-      as: :give_feedback_receptions
+      action: :update_time,
+      as: :update_time_receptions
+
+    get 'receptions/:id/response', 
+      controller: 'receptions',
+      action: :edit_response,
+      as: :new_response_receptions
+
+    put 'receptions/:id/response', 
+      controller: 'receptions',
+      action: :update_response,
+      as: :update_response_receptions
 
     get 'receptions',
       controller: 'receptions',
