@@ -1,6 +1,14 @@
-<table>
-  <tr>
-    <th><%= link_to "You are Patient", new_user_session_path %></th>
-    <th><%= link_to "You are Doctor", new_doctor_session_path %></th>
-  </tr>
-</table>  
+<% unless current_user || current_doctor %>
+  <table>
+    <tr>
+      <th><%= link_to "You are Patient", new_user_session_path %></th>
+      <th><%= link_to "You are Doctor", new_doctor_session_path %></th>
+    </tr>
+  </table>  
+<% else %>
+  <% if current_doctor %>
+    <%= link_to 'list of receptions', doctors_index_reception_path %>  
+  <% elsif current_user %>
+    <%= link_to 'list of receptions', doctors_index_reception_path %>  
+  <% end %>
+<% end %>

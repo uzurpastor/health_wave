@@ -17,7 +17,7 @@ module Users
     def create
       @reception = current_user.receptions.new(receptions_create_params)
       if @reception.save
-        redirect_to users_index_receptions_path,
+        redirect_to users_index_reception_path,
                     flash: { success: 'wait for setting time' }
       else
         render 'users/receptions/new'

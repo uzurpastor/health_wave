@@ -23,6 +23,11 @@ Rails.application.routes.draw do
              }
 
   namespace :doctors do
+    get 'receptions',
+        controller: 'receptions',
+        action: :index,
+        as: :index_reception
+
     get 'receptions/:id/time',
         controller: 'receptions',
         action: :edit_time,
@@ -42,18 +47,13 @@ Rails.application.routes.draw do
         controller: 'receptions',
         action: :update_response,
         as: :update_response_receptions
-
-    get 'receptions',
-        controller: 'receptions',
-        action: :index,
-        as: :index_reception
   end
 
   namespace :users do
     get 'receptions',
         controller: 'receptions',
         action: :index,
-        as: :index_receptions
+        as: :index_reception
 
     get 'receptions/new',
         controller: 'receptions',
