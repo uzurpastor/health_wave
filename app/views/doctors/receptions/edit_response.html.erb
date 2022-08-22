@@ -1,1 +1,26 @@
-edit_response.html.erb
+<h1>Set response</h1>
+<%= form_for @reception, url: doctors_update_response_receptions_path, method: :put, data: {turbo: false} do |f| %>
+  <div class="field">
+    <%= f.label :user_name %><br />
+    <%= @reception.user.name %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= @reception.description %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= @reception.time %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :response %><br />
+    <%= f.text_field :response, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Set response" %>
+  </div>
+<% end %>

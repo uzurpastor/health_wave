@@ -25,16 +25,28 @@ module Doctors
     end
 
     def edit_response
+      @reception = Reception.find params[:id]
       render 'doctors/receptions/edit_response'
     end
     def update_response
-      
+      reception = Reception.find params[:id]
+      if reception.update(receptions_response_update_params)
+        redirect_to doctors_index_reception_path,
+          flash: {success: 'Success send feedback'}
+      else
+        redirect_to doctors_new_response_receptions_path,
+          flash: {danger: 'some problems'}
+      end
     end
 
     protected
 
     def receptions_time_update_params
       params.require(:reception).permit(:time).merge status: :waiting      
+    end
+
+    def receptions_response_update_params
+      params.require(:reception).permit(:response).merge status: :reply      
     end
   end
 end
