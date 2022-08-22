@@ -1,5 +1,7 @@
 <h1>Set time of meet</h1>
 <%= form_for @reception, url: doctors_update_time_receptions_path, method: :put, data: {turbo: false} do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
   <div class="field">
     <%= f.label :user_name %><br />
     <%= @reception.user.name %>

@@ -2,45 +2,44 @@
 
 module Doctors
   class ReceptionsController < ReceptionsController
+    before_action :set_reception, except: :index
+
     def index
-      @receptions = current_doctor.receptions
+      @receptions = current_doctor.receptions.select(:id, :description, :user_id, :status, :time)
+
       render 'doctors/receptions/index'
     end
 
     def edit_time
-      @reception = Reception.find params[:id]
       render 'doctors/receptions/edit_time'
     end
 
     def update_time
-      reception = Reception.find params[:id]
-      if reception.update(receptions_time_update_params)
+      if @reception.update(receptions_time_update_params)
         redirect_to doctors_index_reception_path,
                     flash: { success: 'Success set time' }
       else
-        redirect_to doctors_new_time_receptions_path,
-                    flash: { danger: 'some problems' }
+        render 'doctors/receptions/edit_time'
       end
     end
 
     def edit_response
-      @reception = Reception.find params[:id]
       render 'doctors/receptions/edit_response'
     end
 
     def update_response
-      reception = Reception.find params[:id]
-      if reception.update(receptions_response_update_params)
+      if @reception.update(receptions_response_update_params)
         redirect_to doctors_index_reception_path,
                     flash: { success: 'Success send feedback' }
       else
-        redirect_to doctors_new_response_receptions_path,
-                    flash: { danger: 'some problems' }
+        render 'doctors/receptions/edit_response'
       end
     end
 
     protected
-
+    def set_reception
+      @reception = Reception.find params[:id]
+    end
     def receptions_time_update_params
       params.require(:reception).permit(:time).merge status: :waiting
     end

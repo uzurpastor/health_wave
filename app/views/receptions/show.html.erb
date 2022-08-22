@@ -3,5 +3,11 @@
 <% if current_user %>
   <%= link_to "List of receptions for user", users_index_receptions_path %>
 <% elsif current_doctor %>
-  <%= link_to "List of receptions for doctor", doctors_index_receptions_path %>
+  <% if @reception.considering? %>
+    <%= link_to 'set time of meet', doctors_new_time_receptions_path %>    
+  <% elsif @reception.waiting? %>
+    <%= link_to 'send response to user and close reception', doctors_new_response_receptions_path %>
+  <% end %>
+  <br>
+  <%= link_to "List of receptions for doctor", doctors_index_reception_path %>
 <% end %>
