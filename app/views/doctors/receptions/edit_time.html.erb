@@ -1,1 +1,20 @@
-edit_time.html.erb
+<h1>Set time of meet</h1>
+<%= form_for @reception, url: doctors_update_time_receptions_path, method: :put, data: {turbo: false} do |f| %>
+  <div class="field">
+    <%= f.label :user_name %><br />
+    <%= @reception.user.name %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= @reception.description %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= f.date_field :time, autofocus: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Set time" %>
+  </div>
+<% end %>
