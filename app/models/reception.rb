@@ -18,6 +18,7 @@ class Reception < ApplicationRecord
 
   def number_of_doctors_reception_less_then10
     return true if doctor_id.blank?
+
     doctor = Doctor.find doctor_id
     receptions = doctor.receptions.reject(&:reply?)
     errors.add(:doctor_id, 'cannot have more than 10 patients at the same time ') unless receptions.count < 10

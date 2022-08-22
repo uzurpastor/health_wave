@@ -30,12 +30,24 @@ end
 end
 
 ## Receptions
-20.times do
+70.times do
   user        = User.all.sample
   doctor      = Doctor.all.sample
   description = Faker::Lorem.paragraph sentence_count: 3
 
-  user.receptions.create!(doctor_id: doctor.id,
-                          status: 'considering',
-                          description: description)
+  user.receptions.create(doctor_id: doctor.id,
+                         status: 'considering',
+                         description: description)
+end
+
+Reception.all.sample(20).each do |r|
+  r.time = DateTime.now + SecureRandom.random_number(30)
+  r.status = :waiting
+  r.save
+end
+
+Reception.all.sample(20).each do |r|
+  r.response = Faker::Lorem.paragraph sentence_count: 3
+  r.status = :reply
+  r.save
 end

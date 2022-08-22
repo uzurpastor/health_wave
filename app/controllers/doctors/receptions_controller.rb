@@ -37,9 +37,11 @@ module Doctors
     end
 
     protected
+
     def set_reception
       @reception = Reception.find params[:id]
     end
+
     def receptions_time_update_params
       params.require(:reception).permit(:time).merge status: :waiting
     end
