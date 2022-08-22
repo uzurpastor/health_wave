@@ -1,6 +1,8 @@
 <h2>Create reception</h2>
 
 <%= form_for(@reception, url: users_create_reception_path, data: { turbo: false}) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description, autofocus: true %>
