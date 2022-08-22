@@ -1,14 +1,12 @@
+# frozen_string_literal: true
+
 module Users
   class ReceptionsController < ReceptionsController
-    before_action :collect_doctors, only: [:new, :create]
+    before_action :collect_doctors, only: %i[new create]
 
-    def show 
-      super
-    end
-    
     def index
       @receptions = current_user.receptions
-      render 'users/receptions/index'    
+      render 'users/receptions/index'
     end
 
     def new
@@ -17,10 +15,10 @@ module Users
     end
 
     def create
-      @reception = current_user.receptions.new( receptions_create_params )
+      @reception = current_user.receptions.new(receptions_create_params)
       if @reception.save
         redirect_to users_index_receptions_path,
-          flash: { success: "wait for setting time" }
+                    flash: { success: 'wait for setting time' }
       else
         render 'users/receptions/new'
       end
@@ -29,7 +27,7 @@ module Users
     protected
 
     def collect_doctors
-      @doctors= Doctor.all.collect { |p| [ p.name, p.id ] } 
+      @doctors = Doctor.all.collect { |p| [p.name, p.id] }
     end
 
     def receptions_create_params

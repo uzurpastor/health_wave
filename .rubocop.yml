@@ -138,7 +138,6 @@ Style/SwapValues: # new in 1.1
   
 Style/Documentation:
   Exclude:
-    - 'app/helpers/application_helper.rb'
     - 'config/application.rb'
     - 'db/migrate/*'
 

@@ -4,10 +4,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(account)
-
-    if account.class.name == 'Doctor'
-      can :update, Reception, [:time, :response]
-    elsif account.class.name == 'User'
+    case account.class.name
+    when 'Doctor'
+      can :update, Reception, %i[time response]
+    when 'User'
       can :create, Reception
     end
 

@@ -1,19 +1,8 @@
-ActiveAdmin.register User do
+# frozen_string_literal: true
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :phone, :name, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:phone, :name, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+ActiveAdmin.register User do
+  permit_params :phone, :name, :email
+
   index do
     selectable_column
     id_column
@@ -31,7 +20,7 @@ ActiveAdmin.register User do
     end
     f.actions
   end
-  show do 
+  show do
     attributes_table do
       row :name
       row :email

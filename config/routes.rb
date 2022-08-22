@@ -23,60 +23,60 @@ Rails.application.routes.draw do
              }
 
   namespace :doctors do
-    get 'receptions/:id/time', 
-      controller: 'receptions',
-      action: :edit_time,
-      as: :new_time_receptions
+    get 'receptions/:id/time',
+        controller: 'receptions',
+        action: :edit_time,
+        as: :new_time_receptions
 
-    put 'receptions/:id/time', 
-      controller: 'receptions',
-      action: :update_time,
-      as: :update_time_receptions
+    put 'receptions/:id/time',
+        controller: 'receptions',
+        action: :update_time,
+        as: :update_time_receptions
 
-    get 'receptions/:id/response', 
-      controller: 'receptions',
-      action: :edit_response,
-      as: :new_response_receptions
+    get 'receptions/:id/response',
+        controller: 'receptions',
+        action: :edit_response,
+        as: :new_response_receptions
 
-    put 'receptions/:id/response', 
-      controller: 'receptions',
-      action: :update_response,
-      as: :update_response_receptions
+    put 'receptions/:id/response',
+        controller: 'receptions',
+        action: :update_response,
+        as: :update_response_receptions
 
     get 'receptions',
-      controller: 'receptions',
-      action: :index,
-      as: :index_reception
+        controller: 'receptions',
+        action: :index,
+        as: :index_reception
   end
 
-  namespace :users do 
+  namespace :users do
     get 'receptions',
-      controller: 'receptions',
-      action: :index,
-      as: :index_receptions
+        controller: 'receptions',
+        action: :index,
+        as: :index_receptions
 
     get 'receptions/new',
-      controller: 'receptions',
-      action: :new,
-      as: :new_reception
+        controller: 'receptions',
+        action: :new,
+        as: :new_reception
 
     post 'receptions',
-      controller: 'receptions',
-      action: :create,
-      as: :create_reception
+         controller: 'receptions',
+         action: :create,
+         as: :create_reception
   end
 
-# Show actions
+  # Show actions
   get 'users/:id',
-        controller: 'users/displays',
-        action: :show,
-        as: :user
+      controller: 'users/displays',
+      action: :show,
+      as: :user
   get 'doctors/:id',
-        controller: 'doctors/displays',
-        action: :show,
-        as: :doctor
+      controller: 'doctors/displays',
+      action: :show,
+      as: :doctor
   get 'reseptions/:id',
-        controller: 'reseptions',
-        action: :show,
-        as: :reception
+      controller: 'reseptions',
+      action: :show,
+      as: :reception
 end
