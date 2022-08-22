@@ -2,7 +2,17 @@
 
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')
+User.create( name: 'Username',
+             email: 'user_name@mail.com',
+             phone: '099123456',
+             password: 'passwd',
+             password_confirmation: 'passwd')
 
+Doctor.create( name: 'Username',
+               email: 'user_name@mail.com',
+               category: 'endocrinologist'
+               password: 'passwd',
+               password_confirmation: 'passwd')
 ## Users
 30.times do
   name      = Faker::Name.first_name
