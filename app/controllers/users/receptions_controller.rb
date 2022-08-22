@@ -5,7 +5,7 @@ module Users
     before_action :collect_doctors, only: %i[new create]
 
     def index
-      @receptions = current_user.receptions
+      @receptions = current_user.receptions.select(:id, :description, :user_id, :doctor_id, :status, :time)
       render 'users/receptions/index'
     end
 

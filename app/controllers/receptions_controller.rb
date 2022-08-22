@@ -2,7 +2,7 @@
 
 class ReceptionsController < ApplicationController
   def show
-    @receptions = Reception.find params[:id]
+    @reception = Reception.select(:id, :description, :user_id, :doctor_id, :status, :time).find params[:id]
     render 'receptions/show'
   end
 end

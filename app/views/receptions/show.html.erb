@@ -1,2 +1,7 @@
-show.html.erb
-<% debugger %>
+<%= @reception.inspect %>
+<br>
+<% if current_user %>
+  <%= link_to "List of receptions for user", users_index_receptions_path %>
+<% elsif current_doctor %>
+  <%= link_to "List of receptions for doctor", doctors_index_receptions_path %>
+<% end %>

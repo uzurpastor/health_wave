@@ -76,7 +76,7 @@ Rails.application.routes.draw do
       action: :show,
       as: :doctor
   get 'reseptions/:id',
-      controller: 'reseptions',
+      controller: 'receptions',
       action: :show,
       as: :reception
 end
