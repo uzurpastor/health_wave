@@ -6,9 +6,9 @@ class Ability
   def initialize(account)
 
     if account.class.name == 'Doctor'
-
+      can :update, Reception, [:time, :response]
     elsif account.class.name == 'User'
-            
+      can :create, Reception
     end
 
     # Define abilities for the user here. For example:
