@@ -1,0 +1,7 @@
+<% if @receptions.blank? %>
+  You doesn't have any reception
+<% else %>
+  <% @receptions.each do |reception| %>
+    <%= render 'receptions/reception', reception: reception %>
+  <% end %>
+<% end %>
