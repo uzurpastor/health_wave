@@ -1,3 +1,8 @@
 <%= reception.inspect %>
-<%= link_to 'show this reception', reception_path(reception) %>
+<%= link_to 'show', reception_path(reception) %>
+<% if  can? :update_time, reception %>
+	<%= link_to "time", doctors_update_time_receptions_path(reception)  %>
+<% elsif can? :update_response, reception %>
+	<%= link_to 'response', doctors_update_response_receptions_path(reception) %>
+<% end %>
 <br>
