@@ -1,7 +1,7 @@
 <%= @reception.inspect %>
 <br>
 <% if current_user %>
-  <%= link_to "List of receptions for user", doctors_index_reception_path %>
+  <%= link_to "List of receptions for user", users_index_reception_path %>
 <% elsif current_doctor %>
   <% if @reception.considering? %>
     <%= link_to 'set time of meet', doctors_new_time_receptions_path %>    
