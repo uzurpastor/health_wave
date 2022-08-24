@@ -3,15 +3,20 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(account, reception = nil)
+  def initialize(account)
 
     case account.class.name
     when 'Doctor'
-      can     :update_response,                Reception, waiting?: true
-      can     :update_time,                    Reception, considering?: true
-      cannot [:update_time, :update_response], Reception, reply?: true
-      return 
+      can %i(edit_time 
+             update_time), Reception, considering?: true
 
+      can %i(edit_response 
+             update_response), Reception, waiting?: true
+
+      cannot %i(edit_time 
+                edit_response 
+                update_time
+                update_response), Reception, reply?: true
     when 'User'
       can :create, Reception
     end
