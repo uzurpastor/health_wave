@@ -27,7 +27,7 @@ module Users
     protected
 
     def collect_doctors
-      @doctors = Doctor.all.collect { |p| [p.name, p.id] }
+      @doctors = Doctor.find_free_now.collect {|e| [e.name, e.id]}
     end
 
     def receptions_create_params

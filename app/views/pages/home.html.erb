@@ -1,3 +1,4 @@
+
 <% unless current_user || current_doctor %>
   <table>
     <tr>
@@ -9,6 +10,6 @@
   <% if current_doctor %>
     <%= link_to 'list of receptions', doctors_index_reception_path %>  
   <% elsif current_user %>
-    <%= link_to 'list of receptions', doctors_index_reception_path %>  
+    <%= link_to 'list of receptions', users_index_reception_path %>  
   <% end %>
 <% end %>
