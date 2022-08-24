@@ -10,7 +10,7 @@ User.create( name: 'Username',
 
 Doctor.create( name: 'Username',
                email: 'doctor@mail.com',
-               category: 'endocrinologist'
+               category: 'endocrinologist',
                password: 'passwd',
                password_confirmation: 'passwd')
 ## Users
