@@ -1,4 +1,8 @@
 # frozen_string_literal: true
+categories_list = %w(pediatrician endocrinologist neurologist rheumatologist psychiatrist)
+categories_list.each do |category|
+  Category.create!(name: category)
+end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')
@@ -10,7 +14,7 @@ User.create( name: 'Username',
 
 Doctor.create( name: 'Username',
                email: 'doctor@mail.com',
-               category: 'endocrinologist'
+               category_id: 2, #=> 'endocrinologist',
                password: 'passwd',
                password_confirmation: 'passwd')
 ## Users
@@ -31,10 +35,10 @@ end
   name      = Faker::Name.first_name
   email     = Faker::Internet.free_email name: name
   password  = Faker::Internet.password min_length: 6
-  category  = Doctor.categories.keys.sample
+  category  = Category.all.sample
   Doctor.create!(name: name,
                  email: email,
-                 category: category,
+                 category_id: category.id,
                  password: password,
                  password_confirmation: password)
 end
