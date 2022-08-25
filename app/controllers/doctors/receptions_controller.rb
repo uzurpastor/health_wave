@@ -6,8 +6,8 @@ module Doctors
     before_action :check_safety, except: :index
 
     def index
-      @receptions = current_doctor.receptions.select(:id, :description, :user_id, :status, :time)
-
+      @filtering_status = status_param
+      @receptions = reception_for_current_doctor_by @filtering_status
       render 'doctors/receptions/index'
     end
 
@@ -70,10 +70,19 @@ module Doctors
       self.return if not_safety?
     end
     ## end block for safe
-
+    def reception_for_current_doctor_by status
+      current_doctor
+        .receptions.where('status = ?', status)
+        .select(:id, :description, :user_id, :status, :time)
+    end
 
     def set_reception
       @reception = Reception.find params[:id]
+    end
+
+    def status_param
+      return 'considering' if params.permit(:status).blank?
+      params[:status]
     end
 
     def receptions_time_update_params
