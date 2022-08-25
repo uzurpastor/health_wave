@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Doctor do
-  permit_params :email, :category, :name
+  permit_params :email, :category_id, :name
 
   index do
     selectable_column
