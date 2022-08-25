@@ -23,7 +23,7 @@ Doctor.create( name: 'Username',
   email     = Faker::Internet.free_email name: name
   phone     = Faker::PhoneNumber.cell_phone
   password  = Faker::Internet.password min_length: 6
-  User.create!(name: name,
+  User.create( name: name,
                email: email,
                phone: phone,
                password: password,
@@ -36,7 +36,7 @@ end
   email     = Faker::Internet.free_email name: name
   password  = Faker::Internet.password min_length: 6
   category  = Category.all.sample
-  Doctor.create!(name: name,
+  Doctor.create( name: name,
                  email: email,
                  category_id: category.id,
                  password: password,
@@ -44,14 +44,14 @@ end
 end
 
 ## Receptions
-70.times do
+55.times do
   user        = User.all.sample
   doctor      = Doctor.all.sample
   description = Faker::Lorem.paragraph sentence_count: 3
 
-  user.receptions.create(doctor_id: doctor.id,
-                         status: 'considering',
-                         description: description)
+  user.receptions.create( doctor_id: doctor.id,
+                          status: 'considering',
+                          description: description)
 end
 
 Reception.all.sample(20).each do |r|
@@ -63,5 +63,5 @@ end
 Reception.all.sample(20).each do |r|
   r.response = Faker::Lorem.paragraph sentence_count: 3
   r.status = :reply
-  r.save
+  r.save!
 end
