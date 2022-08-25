@@ -2,7 +2,7 @@
   <%= image_tag @user.avatar, alt: "avatar", width: 50 %>
 <% end %>
 <h2>
-  <%= @doctor.inspect %>
+  <%= @doctor.inspect %> <%= @category.inspect %>
 </h2>
   
 <% if @doctor == current_doctor %>

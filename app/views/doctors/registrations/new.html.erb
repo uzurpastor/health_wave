@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select :category, Doctor.categories, include_blank: true, default: '' %>
+    <%= f.select :category_id, @categories, include_blank: true, default: '' %>
   </div>
 
   <div class="field">
