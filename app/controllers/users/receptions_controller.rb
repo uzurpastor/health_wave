@@ -2,7 +2,7 @@
 
 module Users
   class ReceptionsController < ReceptionsController
-    before_action :collect_doctors, only: %i[new create]
+    before_action :collect_doctors_and_category, only: %i[new create]
 
     def index
       @receptions = current_user.receptions.select(:id, :description, :doctor_id, :status, :time)
@@ -26,9 +26,29 @@ module Users
 
     protected
 
-    def collect_doctors
-      @doctors = Doctor.find_free_now.collect {|e| [e.name, e.id]}
-    end
+    ## START Collector servece 
+                  def collect_doctors_and_category
+                    @grouped_options = collect_options
+                  end
+
+                  def collect_options
+                    categories = Category.all
+                    doctors = Doctor.find_free_now
+                    collect = {}
+
+                    categories.each do |category|
+                      doctors_list = collect_doctors_by(category)
+                      collect["#{category.name}"] = doctors_list
+                    end
+                    collect
+                  end
+
+                  def collect_doctors_by category
+                    Doctor.find_free_now.map do |doctor|
+                      doctor.name if category.doctors.include?(doctor)
+                    end.compact
+                  end
+    ## END
 
     def receptions_create_params
       params.require(:reception).permit(:doctor_id, :description).merge status: :considering

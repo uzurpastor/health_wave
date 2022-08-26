@@ -1,6 +1,6 @@
 <h2>Create reception</h2>
 
-<%= form_for(@reception, url: users_create_reception_path, data: { turbo: false}) do |f| %>
+<%= form_for(@reception, url: users_create_reception_path, data: { turbo: false }) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
 
   <div class="field">
@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label :doctor %><br />
-    <%= f.select :doctor_id, @doctors, include_blank: true, default: ''%>
+    <%= f.select :doctor_id, grouped_options_for_select(@grouped_options) %>
   </div>
 
   <div class="actions">
