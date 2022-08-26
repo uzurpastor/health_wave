@@ -358,6 +358,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  jquery-rails
   net-http
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)

@@ -8,15 +8,15 @@ class Ability
     case account.class.name
     when 'Doctor'
       can %i(edit_time 
-             update_time), Reception, considering?: true
+             update_time), Reception, process?: true
 
       can %i(edit_response 
-             update_response), Reception, waiting?: true
+             update_response), Reception, appoint?: true
 
       cannot %i(edit_time 
                 edit_response 
                 update_time
-                update_response), Reception, reply?: true
+                update_response), Reception, close?: true
     when 'User'
       can :create, Reception
     end

@@ -51,7 +51,7 @@ module Users
     ## END
 
     def receptions_create_params
-      params.require(:reception).permit(:doctor_id, :description).merge status: :considering
+      params.require(:reception).permit(:doctor_id, :description).merge status: :process
     end
   end
 end

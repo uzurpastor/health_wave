@@ -80,7 +80,7 @@ module Doctors
     end
 
     def status_param
-      return 'considering' if params.permit(:status).blank?
+      return 'process' if params.permit(:status).blank?
       params[:status]
     end
 
@@ -89,11 +89,11 @@ module Doctors
     end
 
     def receptions_time_update_params
-      params.require(:reception).permit(:time).merge status: :waiting
+      params.require(:reception).permit(:time).merge status: :appoint
     end
 
     def receptions_response_update_params
-      params.require(:reception).permit(:response).merge status: :reply
+      params.require(:reception).permit(:response).merge status: :close
     end
   end
 end
