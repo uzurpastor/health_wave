@@ -6,17 +6,17 @@ end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')
-User.create( name: 'Username',
-             email: 'user@mail.com',
-             phone: '099123456',
-             password: 'passwd',
-             password_confirmation: 'passwd')
+User.create!( name: 'Username',
+              email: 'user@mail.com',
+              phone: '+380991234567',
+              password: 'passwd',
+              password_confirmation: 'passwd')
 
-Doctor.create( name: 'Username',
-               email: 'doctor@mail.com',
-               category_id: 2, #=> 'endocrinologist',
-               password: 'passwd',
-               password_confirmation: 'passwd')
+Doctor.create!( name: 'Username',
+                email: 'doctor@mail.com',
+                category_id: 2, #=> 'endocrinologist',
+                password: 'passwd',
+                password_confirmation: 'passwd')
 ## Users
 30.times do
   name      = Faker::Name.first_name
@@ -57,11 +57,14 @@ end
 Reception.all.sample(20).each do |r|
   r.time = DateTime.now + SecureRandom.random_number(30)
   r.status = :appoint
-  r.save
+  r.save!
 end
+
+Reception.all.reload
 
 Reception.all.sample(20).each do |r|
   r.response = Faker::Lorem.paragraph sentence_count: 3
   r.status = :close
-  r.save!
+
+  r.save
 end

@@ -11,7 +11,7 @@ class Reception < ApplicationRecord
   }
 
   validates_presence_of :description, :user_id, :doctor_id
-  validates_presence_of :time, on: :update_time
+  validates_presence_of :time, on: :update
   validate :number_of_doctors_reception_less_then10, on: :create
 
   private
