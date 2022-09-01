@@ -1,11 +1,5 @@
 index user
 <br>
-<% if @receptions.blank? %>
-  You doesn't have any reception
-<% else %>
-  <% @receptions.each do |reception| %>
-    <%= render 'receptions/reception', reception: reception %>
-  <% end %>
-<% end %>
+<%= render 'receptions/index' %>
 <br />
 <%= link_to "Create new reception", users_new_reception_path %>

@@ -2,7 +2,6 @@
 
 module Users
   class ReceptionsController < ReceptionsController
-    before_action :collect_doctors, only: %i[new create]
 
     def index
       @receptions = current_user.receptions.select(:id, :description, :doctor_id, :status, :time)
@@ -10,6 +9,7 @@ module Users
     end
 
     def new
+      @grouped_doctors = Collector.group_doctors_by_categories(Doctor.find_free_now)
       @reception = Reception.new
       render 'users/receptions/new'
     end
@@ -26,12 +26,8 @@ module Users
 
     protected
 
-    def collect_doctors
-      @doctors = Doctor.all.collect { |p| [p.name, p.id] }
-    end
-
     def receptions_create_params
-      params.require(:reception).permit(:doctor_id, :description).merge status: :considering
+      params.require(:reception).permit(:doctor_id, :description).merge status: :process
     end
   end
 end

@@ -6,7 +6,7 @@ FactoryBot.define do
     user_id { 1 }
     doctor_id { 1 }
     description { Faker::Lorem.paragraph(sentence_count: 3) }
-    status { :waiting }
+    status { :appoint }
     time { DateTime.now }
   end
 end

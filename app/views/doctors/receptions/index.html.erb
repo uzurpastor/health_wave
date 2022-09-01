@@ -1,5 +1,8 @@
 index doctor
 <br>
-<% @receptions.each do |reception| %>
-  <%= render 'receptions/reception', reception: reception %>
+
+<%= form_tag doctors_index_reception_path, method: :get do %>
+  <%= select_tag :status, options_for_select(Reception.statuses.values, @filtering_status) %>
+  <%= submit_tag 'filter' %>
 <% end %>
+<%= render 'receptions/index' %>
