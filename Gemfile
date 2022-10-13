@@ -3,38 +3,27 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '3.1.2'
+
+gem 'activeadmin'
+gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
-gem 'importmap-rails'
+gem 'cancancan'
+gem 'devise'
 gem 'jbuilder'
 gem 'net-http'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
-gem 'sprockets-rails'
-gem 'stimulus-rails'
-gem 'turbo-rails'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'phonelib'
-gem 'twilio-ruby'
-
-## Style
 gem 'sassc-rails'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'twilio-ruby'
+gem 'phonelib'
 
-## Authorization
-gem 'cancancan'
-gem 'devise'
-
-## Admin panel
-gem 'activeadmin'
-
-## Storage
-gem 'aws-sdk-s3'
-##
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
   gem 'rubocop', require: false
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -42,13 +31,9 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-
-  ## Web utils
   gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-
-  ## Generating fake data
-  gem 'factory_bot_rails'
 end

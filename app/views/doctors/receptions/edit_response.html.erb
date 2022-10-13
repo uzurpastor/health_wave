@@ -1,5 +1,5 @@
 <h1>Set response</h1>
-<%= form_for @reception, url: doctors_update_response_receptions_path, method: :put, data: {turbo: false} do |f| %>
+<%= form_for @reception, url: doctors_update_response_receptions_path, method: :put do |f| %>
   <%= render "shared/error_messages", object: f.object %>
 
   <div class="field">
